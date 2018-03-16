@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+	<title>BookList Login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+	<style>
+	
+		form {			
+			padding: 0 5vw;			
+		}
+		input {
+			margin-bottom: 15px;
+		}
+		body {
+			margin-top: 20px;
+		}
+		.right {
+			float: right;
+		}
+	
+	</style>
+</head>
+<body>
+
+	<div class="container">
+	
+		<h1>Book Database Login:</h1>
+	
+		<div class="alert alert-danger" th:if="${param.error}">
+			Invalid username and password.
+		</div>
+		
+		<div class="alert alert-warning" th:if="${param.logout}">
+			You have been logged out.
+		</div>
+		
+		<form th:action="@{/login}" method="post">
+			<div><label>User Name : <input type="text" name="username" class="form-control" /></label></div>
+			<div><label>Password : <input type="password" name="password" class="form-control" /></label></div>
+			<div><input type="submit" value="Sign In" class="btn btn-success"/></div>		
+		</form>
+		
+	</div>
+
+
+	
+</body>
+</html>

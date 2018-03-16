@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>BookList</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+	<style>
+	
+		form {			
+			padding: 0 5vw;			
+		}
+		input {
+			margin-bottom: 15px;
+		}
+		body {
+			margin-top: 20px;
+		}
+		.right {
+			float: right;
+		}
+	
+	</style>
+</head>
+<body>
+
+	<div class="container">
+	
+		<h1>Book Database</h1>
+	
+		<h2>Edit a book:</h2>
+		
+		<div>
+			<form th:object="${book}" th:action="@{../save}" action="#" method="post">
+				<div class="form-group">
+					<input type="hidden" th:field="*{id}" class="form-control"/>			
+					<label for="author">Author</label>
+					<input type="text" id="author" class="form-control" placeholder="Enter the author" th:field="*{author}" />
+					<label for="title">Title</label>
+					<input type="text" id="title" class="form-control" placeholder="Enter the title" th:field="*{title}" />
+					<label for="isbn">ISBN</label>
+					<input type="text" id="isbn" class="form-control" placeholder="Enter the ISBN" th:field="*{isbn}" />
+					<label for="year">Year published</label>
+					<input type="number" id="year" class="form-control" th:field="*{year}" />
+					<label for="price">Price</label>
+					<input type="number" id="price" class="form-control" th:field="*{price}" step="0.01"/>
+					
+					<label for="genre">Genre</label>
+						 <select id="genre" th:field="*{category}" class="form-control">
+			       			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+			    		</select>
+					
+					<button type="submit" class="btn btn-success">Save</button>
+					<a class="btn btn-secondary right" th:href="@{/books}">Cancel</a>	
+				</div>			
+			</form>
+		</div>
+	
+	</div>
+
+
+	
+</body>
+</html>
